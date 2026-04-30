@@ -2,6 +2,11 @@
 
 UI automation using Robot Framework + Browser (Playwright) library.
 
+## Documentation
+
+- [Test Strategy](docs/TEST_STRATEGY.md) - Collaboration model, tool choices, phased approach
+- [Test Coverage](docs/TEST_COVERAGE.md) - Coverage matrix, gaps, and roadmap
+
 ## Prerequisites
 
 - Python 3.9+
