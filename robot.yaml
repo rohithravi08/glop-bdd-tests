@@ -1,0 +1,8 @@
+# Robot Framework configuration
+# Run with: robot --argumentfile robot.yaml tests/
+
+default:
+  pythonpath:
+    - .
+  outputdir: results
+  loglevel: INFO

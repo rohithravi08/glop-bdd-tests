@@ -1,0 +1,37 @@
+# Environment secrets
+.env
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Test results
+results/
+output.xml
+log.html
+report.html
+*.png
+plan.md
+*log.*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Browser library
+.browser/
+browser/
+
+# Node
+node_modules/

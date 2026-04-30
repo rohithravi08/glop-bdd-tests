@@ -1,0 +1,10 @@
+# Development environment configuration
+# Note: Credentials are stored in .env file (not committed to repo)
+
+base_url: https://review-chore-glop-2akg6v.dev.glopros.com
+vacancy_create_url: https://review-chore-glop-2akg6v.dev.glopros.com/vacancies/create/
+
+browser:
+  type: chromium
+  headless: false
+  timeout: 30000

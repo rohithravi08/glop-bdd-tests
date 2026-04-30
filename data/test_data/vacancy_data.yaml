@@ -1,0 +1,27 @@
+# Vacancy creation test data
+
+vacancy:
+  job_title: "Senior Software Engineer"
+  skills:
+    - "Python"
+    - "JavaScript"
+    - "React"
+  education:
+    degree: "masters"
+    area: "Accounting"
+  language: "English"
+  location:
+    city: "New York, NY, USA"
+    type: "remote"
+  employment:
+    type: "Freelance"
+    rate_clicks: 1  # Number of times to click + for hourly rate
+  description: |
+    We are looking for a Senior Software Engineer to join our team.
+    The ideal candidate will have strong experience in Python and JavaScript.
+    You will be responsible for designing and implementing new features.
+    Experience with React and modern frontend frameworks is required.
+    Strong problem-solving skills and attention to detail are essential.
+    You should be comfortable working in an agile environment.
+    Remote work is available for this position.
+    Competitive salary and benefits package offered.
