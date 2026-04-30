@@ -1,6 +1,8 @@
 *** Settings ***
 Documentation    Vacancy creation form page - locators and keywords
 Library          Browser
+Library          Collections
+Library          String
 
 *** Variables ***
 # EXPERIENCE SECTION
@@ -175,12 +177,48 @@ Select Default Interview Settings
     Check Checkbox     ${DEFAULT_INTERVIEW_SETTINGS}
 
 Publish Vacancy As Public
-    [Documentation]    Publish vacancy as public
+    [Documentation]    Publish vacancy as public and validate API response
     Click              ${PUBLISH_EXPAND_BUTTON}
     Sleep    2s
     # Select interview settings that appear after clicking expand
     Select Default Interview Settings
+
+    # Set up promise to intercept the POST request BEFORE clicking publish
+    ${promise}=    Promise To    Wait For Response
+    ...    **/wt/api/v1/vacancy/
+    ...    timeout=30s
+
+    # Click publish - this triggers the POST request
     Click              ${PUBLISH_PUBLIC_OPTION}
+
+    # Wait for and capture the response
+    ${response}=    Wait For    ${promise}
+
+    # Validate status code is 201 Created
+    ${status}=    Get From Dictionary    ${response}    status
+    Should Be Equal As Numbers    ${status}    201
+    ...    msg=Expected status 201 Created but got ${status}
+
+    # Get response body - Browser library returns parsed JSON for application/json
+    ${body}=    Get From Dictionary    ${response}    body
+
+    # Validate response body contains expected fields
+    Dictionary Should Contain Key    ${body}    id
+    ...    msg=Response body should contain 'id' field
+    Dictionary Should Contain Key    ${body}    slug
+    ...    msg=Response body should contain 'slug' field
+
+    # Extract values
+    ${vacancy_id}=    Get From Dictionary    ${body}    id
+    ${vacancy_slug}=    Get From Dictionary    ${body}    slug
+
+    # Log the response for debugging
+    Log    Vacancy created with ID: ${vacancy_id} and slug: ${vacancy_slug}
+
+    # Store values for later use in test case
+    Set Test Variable    ${VACANCY_ID}    ${vacancy_id}
+    Set Test Variable    ${VACANCY_SLUG}    ${vacancy_slug}
+
     # Wait for redirect - URL should change from /vacancies/create to vacancy profile page
     Wait For Condition    Url    not contains    /vacancies/create    timeout=60s
     Wait For Load State    networkidle    timeout=30s
