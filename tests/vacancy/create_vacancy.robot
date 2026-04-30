@@ -36,7 +36,8 @@ User Can Create A Public Vacancy
     And User Fills Location Section
     And User Fills Employment Section
     And User Fills Working Hours Section
-    And User Fills Description And Publishes
+    And User Fills Description
+    And User Publishes Vacancy
     Then Vacancy Should Be Created Successfully
 
 *** Keywords ***
@@ -93,9 +94,14 @@ User Fills Working Hours Section
     [Documentation]    Fill working hours with ASAP and no end date
     Fill Working Hours Section
 
-User Fills Description And Publishes
-    [Documentation]    Fill job description and publish as public
-    Fill Description And Publish    ${JOB_DESCRIPTION}
+User Fills Description
+    [Documentation]    Fill job description
+    Fill Job Description    ${JOB_DESCRIPTION}
+    Sleep    2s
+
+User Publishes Vacancy
+    [Documentation]    Publish vacancy as public
+    Publish Vacancy As Public
 
 # VERIFICATION KEYWORDS
 Vacancy Should Be Created Successfully

@@ -177,6 +177,7 @@ Select Default Interview Settings
 Publish Vacancy As Public
     [Documentation]    Publish vacancy as public
     Click              ${PUBLISH_EXPAND_BUTTON}
+    Sleep    2s
     # Select interview settings that appear after clicking expand
     Select Default Interview Settings
     Click              ${PUBLISH_PUBLIC_OPTION}
@@ -188,4 +189,5 @@ Fill Description And Publish
     [Documentation]    Fill description and publish as public
     [Arguments]        ${description}
     Fill Job Description    ${description}
+    Sleep    2s
     Publish Vacancy As Public
