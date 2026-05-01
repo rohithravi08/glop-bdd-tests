@@ -60,11 +60,4 @@ data/environments/  # Environment configs (URLs, credentials)
 
 Tests run automatically on push/PR to `main` branch.
 
-### Setup GitHub Secrets
-
-1. Go to repo **Settings > Secrets and variables > Actions**
-2. Add these secrets:
-   - `GLOP_EMAIL` - Login email
-   - `GLOP_PASSWORD` - Login password
-
 Tests run in headless mode automatically in CI.
